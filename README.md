@@ -3,7 +3,8 @@
 ## 项目概述
 本项目实现了基于深度学习和传统机器学习的IMDB影评情感分析系统，支持使用BERT模型或TF-IDF+分类器的方式进行影评情感（积极/消极）分类。项目采用模块化设计，包含数据加载、模型训练、评估和可视化等完整流程。
 
-项目已融合机器学习方法四种，朴素贝叶斯、支持向量机、随机森林以及逻辑回归，深度学习模型一种Bert，由HuaggingFace-Goog版，已收入项目src中，参数1.1亿，预训练建议采用cuda上传至GPU
+项目已融合机器学习方法四种，朴素贝叶斯、支持向量机、随机森林以及逻辑回归，深度学习模型一种Bert，使用HuaggingFace-Goog版，参数1.1亿，预训练建议采用cuda上传至GPU。
+由于权重文件较大文进行上传**pytorch_model.bin文件与bert_model.ckpt.data-00000-of-00001文件需前往hugingFace官网或github自行下载**，其余配置文件已收入，下载好的权重文件请放入src/bert-base-uncased 目录下。
 
 模型可在config内选择
 
@@ -16,6 +17,7 @@
 ```
 imdb-sentiment-analysis/
 ├── src/                     # 源代码
+│   ├── bert-base-uncased    # 存放Bert预训练模型
 │   ├── config.py            # 配置管理
 │   ├── data_loader.py       # 数据加载与预处理
 │   ├── model_factory.py     # 模型构建
@@ -34,7 +36,7 @@ imdb-sentiment-analysis/
 ## 环境准备
 1. 克隆项目：
 ```bash
-git clone https://github.com/yourusername/imdb-sentiment-analysis.git
+git clone https://github.com/yinyouai/imdb-sentiment-analysis.git
 cd imdb-sentiment-analysis
 ```
 
@@ -94,7 +96,7 @@ python main.py
    - F1分数
 
 ## 实验结果
-训练完成后，模型评估结果将显示在控制台，同时生成训练过程曲线图保存到`plots/`目录。
+训练完成后，模型评估结果将显示在控制台，同时生成训练过程曲线图与评价指标柱状图保存到`plots/`目录。
 
 ## 模型部署
 训练好的模型保存在`models/`目录，可以通过以下方式加载使用：
