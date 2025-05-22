@@ -20,7 +20,7 @@ def main():
     data_loader = IMDBDatasetLoader(config)
 
     # 调用修正后的加载方法（无参数版本，默认使用config中的data_path和train_split）
-    train_loader, test_loader = data_loader.load_and_preprocess_data()  # 假设返回(train_loader, test_loader)
+    train_loader, test_loader = data_loader.load_and_preprocess_data() 
 
     # 模型创建
     print(f"创建 {config.model_type} 模型...")
@@ -39,7 +39,7 @@ def main():
 
     # 评估模型（使用test_loader或val_loader，根据实际数据划分）
     print("评估模型...")
-    evaluator = Evaluator(model, test_loader, device)  # 假设Evaluator初始化不需要config或简化参数
+    evaluator = Evaluator(model, test_loader, device) 
     results = evaluator.evaluate()
 
     # 打印评估结果
@@ -54,7 +54,7 @@ def main():
     visualizer.plot_training_metrics(
         trainer.iterations,
         trainer.train_losses,
-        trainer.test_losses  # 若有验证集损失
+        trainer.test_losses 
     )
     visualizer.plot_model_result(results['accuracy'],results['precision'],results['recall'],results['f1'])
     print("训练和评估完成!")
